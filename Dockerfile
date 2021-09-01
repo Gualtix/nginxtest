@@ -1,13 +1,17 @@
-FROM node:15.6.0
+FROM nginx:alpine
 
-WORKDIR /app
+COPY ./dist/nginxtest/. /usr/share/nginx/html
 
-COPY . .
+#FROM node:15.6.0
 
-RUN npm install 
-RUN npm run build -- --prod
+#WORKDIR /app
 
-EXPOSE 3000
+#COPY . .
 
-FROM nginx
-COPY --from=node /app/dist/nginxtest /usr/share/nginx/html
+#RUN npm install 
+#RUN npm run build -- --prod
+
+#EXPOSE 3000W
+
+#FROM nginx
+#COPY --from=node /app/dist/nginxtest /usr/share/nginx/html
